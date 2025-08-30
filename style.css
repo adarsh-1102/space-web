@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, sans-serif;
-  background: radial-gradient(circle at top, #1b2735, #090a0f);
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   color: white;
   display: flex;
   justify-content: center;
@@ -17,26 +17,28 @@ body {
 h1 {
   margin-bottom: 15px;
   font-size: 2rem;
-  text-shadow: 0 0 12px #0ff;
+  text-shadow: 0 0 10px cyan;
 }
 
-video {
-  width: 85vw;
-  max-width: 650px;
+.camera-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+video, canvas {
+  width: 80vw;
+  max-width: 600px;
   border-radius: 16px;
-  border: 3px solid cyan;
-  box-shadow: 0 0 25px rgba(0,255,255,0.6);
-  background: black;
 }
 
-.overlay {
+#overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.status {
   margin-top: 15px;
-  font-size: 1.2rem;
-  color: #aef;
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  from { text-shadow: 0 0 5px #0ff; }
-  to { text-shadow: 0 0 20px #0ff, 0 0 30px #0ff; }
+  font-size: 1.3rem;
+  text-shadow: 0 0 10px #0ff;
 }
