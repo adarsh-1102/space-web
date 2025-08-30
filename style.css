@@ -39,6 +39,7 @@ video, canvas {
 
 .status {
   margin-top: 15px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  color: #aef;
   text-shadow: 0 0 10px #0ff;
 }
