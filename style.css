@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background: radial-gradient(circle at top, #1b2735, #090a0f);
   color: white;
   display: flex;
   justify-content: center;
@@ -17,22 +17,22 @@ body {
 h1 {
   margin-bottom: 15px;
   font-size: 2rem;
-  text-shadow: 0 0 10px cyan;
+  text-shadow: 0 0 12px #0ff;
 }
 
 video {
-  width: 80vw;
-  max-width: 600px;
-  border-radius: 20px;
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+  width: 85vw;
+  max-width: 650px;
+  border-radius: 16px;
   border: 3px solid cyan;
+  box-shadow: 0 0 25px rgba(0,255,255,0.6);
+  background: black;
 }
 
 .overlay {
   margin-top: 15px;
   font-size: 1.2rem;
   color: #aef;
-  text-shadow: 0 0 10px #0ff;
   animation: glow 2s infinite alternate;
 }
 
