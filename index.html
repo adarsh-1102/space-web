@@ -2,25 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hand Tracking with MediaPipe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hand Tracking Demo</title>
   <link rel="stylesheet" href="style.css">
-  <!-- MediaPipe Hands -->
+  <!-- MediaPipe Hands + Utils -->
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>✋ Hand Tracking</h1>
-    <div class="camera-wrapper">
-      <video id="camera" autoplay playsinline></video>
-      <canvas id="overlay"></canvas>
-    </div>
-    <div class="status">
-      <p id="gesture">Detecting hand...</p>
-    </div>
-  </div>
+  <h1>Hand Tracking Demo</h1>
+  <video id="camera" autoplay playsinline></video>
+  <canvas id="overlay"></canvas>
+  <div id="gesture">Loading model...</div>
   <script src="script.js"></script>
 </body>
 </html>
