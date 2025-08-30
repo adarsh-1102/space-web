@@ -5,6 +5,7 @@ const gestureText = document.getElementById("gesture");
 
 let model;
 
+// Start camera
 async function startCamera() {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({
@@ -18,17 +19,19 @@ async function startCamera() {
       canvas.height = video.videoHeight;
     };
   } catch (err) {
-    alert("Camera access denied!");
+    alert("Camera access denied or not available!");
     console.error(err);
   }
 }
 
+// Load TensorFlow Handpose model
 async function loadModel() {
   model = await handpose.load();
-  console.log("Handpose model loaded!");
+  console.log("✅ Handpose model loaded!");
   detectHands();
 }
 
+// Detect hands & draw
 async function detectHands() {
   const predictions = await model.estimateHands(video);
 
@@ -38,37 +41,22 @@ async function detectHands() {
     predictions.forEach(hand => {
       const landmarks = hand.landmarks;
 
-      // Draw keypoints
+      // Draw joints (dots)
       for (let i = 0; i < landmarks.length; i++) {
         const [x, y] = landmarks[i];
         ctx.beginPath();
-        ctx.arc(x, y, 4, 0, 2 * Math.PI);
+        ctx.arc(x, y, 5, 0, 2 * Math.PI);
         ctx.fillStyle = "cyan";
         ctx.fill();
       }
-
-      // Simple gesture detection: middle finger up
-      if (isMiddleFinger(hand)) {
-        gestureText.textContent = "🖕 Middle Finger Detected!";
-      } else {
-        gestureText.textContent = "✋ Hand Detected!";
-      }
     });
+
+    gestureText.textContent = "✋ Hand detected!";
   } else {
     gestureText.textContent = "No hand detected...";
   }
 
   requestAnimationFrame(detectHands);
-}
-
-// Simple rule: middle finger tip higher than other fingers
-function isMiddleFinger(hand) {
-  const landmarks = hand.landmarks;
-  const middleTip = landmarks[12][1];  // y of middle finger tip
-  const indexTip = landmarks[8][1];
-  const ringTip = landmarks[16][1];
-
-  return middleTip < indexTip && middleTip < ringTip;
 }
 
 startCamera();
