@@ -1,45 +1,24 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background: black;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.container {
   text-align: center;
-}
-
-h1 {
-  margin-bottom: 15px;
-  font-size: 2rem;
-  text-shadow: 0 0 10px cyan;
-}
-
-.camera-wrapper {
-  position: relative;
-  display: inline-block;
+  font-family: Arial, sans-serif;
+  margin: 0;
 }
 
 video, canvas {
-  width: 80vw;
-  max-width: 600px;
-  border-radius: 16px;
-}
-
-#overlay {
   position: absolute;
-  left: 0;
-  top: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100vw;
+  max-height: 100vh;
 }
 
-.status {
-  margin-top: 15px;
-  font-size: 1.2rem;
-  color: #aef;
-  text-shadow: 0 0 10px #0ff;
+#gesture {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  font-size: 1.5em;
+  text-align: center;
 }
