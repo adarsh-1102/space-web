@@ -1,4 +1,4 @@
-/* Reset some default styles */
+/* General reset */
 * {
     margin: 0;
     padding: 0;
@@ -7,91 +7,163 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to bottom, #0b0c10, #1f2833);
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    align-items: center;
+    overflow-x: hidden;
+    transition: background 0.5s;
 }
 
+.space-bg {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at bottom, #0b0c10 0%, #1f2833 100%);
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* Header */
 header {
     text-align: center;
     padding: 2rem;
-    background: rgba(0, 0, 0, 0.5);
-    width: 100%;
 }
 
 header h1 {
     font-size: 3rem;
-    margin-bottom: 0.5rem;
     color: #66fcf1;
-    text-shadow: 2px 2px 4px #000;
+    text-shadow: 2px 2px 8px #000;
 }
 
 header p {
+    margin: 0.5rem 0 1.5rem 0;
     font-size: 1.2rem;
-    margin-bottom: 1rem;
 }
 
-button {
-    background-color: #45a29e;
-    border: none;
+/* Sun button for dark mode */
+.sun {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, #ffd700, #ff8c00);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 30px #ffd700;
+    transition: all 0.3s;
+}
+
+.sun:hover {
+    transform: scale(1.1);
+}
+
+/* Planets */
+.planet {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ff6f91, #ff9671);
+    box-shadow: 0 0 20px #ff6f91;
+}
+
+#planet1 {
+    width: 100px;
+    height: 100px;
+    top: 200px;
+    left: 50px;
+    animation: rotatePlanet 10s linear infinite;
+}
+
+#planet2 {
+    width: 150px;
+    height: 150px;
+    bottom: 100px;
+    right: 100px;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    box-shadow: 0 0 25px #2575fc;
+    animation: rotatePlanet 15s linear infinite;
+}
+
+/* Blackhole */
+.blackhole {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    margin-left: -60px;
+    margin-top: -60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #000 0%, #0b0c10 70%);
+    box-shadow: 0 0 40px #000 inset;
+    animation: spin 5s linear infinite;
+}
+
+/* Button */
+#exploreBtn {
+    display: block;
+    margin: 400px auto 20px;
     padding: 0.8rem 1.5rem;
-    color: white;
     font-size: 1rem;
     border-radius: 8px;
+    border: none;
     cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
+    background-color: #45a29e;
+    color: #fff;
+    transition: transform 0.3s, background-color 0.3s;
 }
 
-button:hover {
+#exploreBtn:hover {
     transform: scale(1.05);
     background-color: #66fcf1;
     color: #000;
 }
 
-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-}
-
+/* Space Image */
 #imageContainer {
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 20px;
     animation: fadeIn 1s ease-in-out;
 }
 
 #spaceImage {
-    max-width: 90vw;
+    max-width: 80vw;
     border-radius: 15px;
     box-shadow: 0 0 20px #66fcf1;
-    transition: transform 0.3s;
 }
 
-#spaceImage:hover {
-    transform: scale(1.05);
-}
-
-#imageCredit {
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: #c5c6c7;
-}
-
+/* Footer */
 footer {
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.7);
-    width: 100%;
     text-align: center;
-    font-size: 0.9rem;
-    color: #c5c6c7;
+    padding: 1rem;
+    background: rgba(0,0,0,0.7);
+    position: relative;
+}
+
+/* Animations */
+@keyframes rotatePlanet {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px);}
     to { opacity: 1; transform: translateY(0);}
+}
+
+/* Dark Mode */
+body.dark-mode .space-bg {
+    background: radial-gradient(ellipse at bottom, #0f0f0f 0%, #000000 100%);
+}
+
+body.dark-mode header h1,
+body.dark-mode header p,
+body.dark-mode footer {
+    color: #f0f0f0;
+}
+
+body.dark-mode .sun {
+    box-shadow: 0 0 30px #ffa500;
 }
